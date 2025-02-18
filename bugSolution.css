@@ -1,0 +1,17 @@
+To solve this issue, avoid using variables or complex expressions directly inside `@apply`. Instead, create separate classes with the desired styling and apply them. For instance:
+
+```css
+:root {
+  --my-color: blue;
+}
+
+.bg-my-color {
+  background-color: var(--my-color);
+}
+
+.my-other-class {
+  @apply bg-my-color text-white;
+}
+```
+
+Here, `bg-my-color` explicitly defines the background color using the variable, and then this class is applied using `@apply`, correctly applying the color.
