@@ -1,0 +1,17 @@
+The issue arises when using Tailwind CSS's `@apply` directive with classes that contain variables or complex expressions.  Consider this example:
+
+```css
+:root {
+  --my-color: blue;
+}
+
+.my-class {
+  @apply bg-blue-500 text-white;
+}
+
+.my-other-class {
+  @apply bg-var(--my-color) text-white;
+}
+```
+
+While `my-class` works as expected, `my-other-class` might not apply the color correctly if the CSS preprocessor doesn't properly handle the variable interpolation within `@apply`.  This is because `@apply` is essentially a post-processing step that injects classes, and not a method to dynamically evaluate expressions.
